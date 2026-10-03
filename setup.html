@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0f14">
+  <title>Configurar iPhone · Intercom Moto</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <h1>Configurar el iPhone</h1>
+      <span class="chip">solo la primera vez</span>
+    </header>
+
+    <p class="hint">Para usar el micrófono, Safari exige una conexión segura (HTTPS). Estos pasos instalan el certificado del intercomunicador en el iPhone. Si ya los hiciste antes, salta al paso 4.</p>
+
+    <ol class="steps">
+      <li>
+        <h2>Descarga el certificado</h2>
+        <p>Abre esta página en <b>Safari</b> (no en Chrome). Toca el botón y luego <b>Permitir</b> y <b>Cerrar</b>.</p>
+        <a class="big" href="/ca.crt">Descargar certificado</a>
+      </li>
+      <li>
+        <h2>Instala el perfil</h2>
+        <p>Ve a <b>Ajustes</b>. Arriba aparece <b>Perfil descargado</b>. Tócalo, luego <b>Instalar</b>, escribe tu código y toca <b>Instalar</b> otra vez.</p>
+        <p>Si no aparece arriba: <b>Ajustes › General › VPN y gestión de dispositivos</b>.</p>
+      </li>
+      <li>
+        <h2>Activa la confianza</h2>
+        <p><b>Ajustes › General › Información</b>, baja hasta el final y toca <b>Ajustes de confianza de certificados</b>. Activa <b>Intercom Moto CA</b> y confirma con <b>Continuar</b>.</p>
+      </li>
+      <li>
+        <h2>Abre el intercomunicador</h2>
+        <p>Guarda esta dirección en favoritos para los próximos viajes:</p>
+        <p><code id="secureUrl">https://…:8443</code></p>
+        <a id="secureLink" class="big primary" href="#">Abrir intercomunicador</a>
+      </li>
+    </ol>
+
+    <p class="hint">¿Estás en el <b>Android</b> que tiene el servidor? No hace falta certificado: abre <code>http://localhost:8080</code> en Chrome.</p>
+  </main>
+  <script>
+    (function () {
+      var url = 'https://' + location.hostname + ':8443/';
+      document.getElementById('secureUrl').textContent = url;
+      document.getElementById('secureLink').href = url;
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0f14">
+  <title>Intercom Moto</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234c8dff'/%3E%3Cpath d='M16 7a4 4 0 0 0-4 4v5a4 4 0 0 0 8 0v-5a4 4 0 0 0-4-4zm-7 9a7 7 0 0 0 14 0h-2a5 5 0 0 1-10 0zm6 8h2v3h-2z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <h1>Intercom Moto</h1>
+      <span id="device" class="chip"></span>
+    </header>
+
+    <section id="statusBox" class="status" data-kind="idle" aria-live="polite">
+      <span class="dot"></span>
+      <span id="status">Listo para conectar</span>
+    </section>
+
+    <div id="bgWarn" class="banner" hidden>
+      <span>La página estuvo oculta o la pantalla se apagó: el audio pudo cortarse.</span>
+      <button id="bgOk" type="button">Entendido</button>
+    </div>
+
+    <section class="meters">
+      <div class="meter">
+        <div class="meter-head"><span>Tu micrófono</span><span id="meTxt" class="muted">—</span></div>
+        <div class="bar"><i id="meLevel"></i></div>
+      </div>
+      <div class="meter">
+        <div class="meter-head"><span>Tu acompañante</span><span id="peerTxt" class="muted">—</span></div>
+        <div class="bar"><i id="peerLevel"></i></div>
+      </div>
+    </section>
+
+    <section class="actions">
+      <button id="btnConnect" class="big primary" type="button">Conectar</button>
+      <button id="btnMute" class="big" type="button" hidden>Silenciar mi micrófono</button>
+      <button id="btnHangup" class="big danger" type="button" hidden>Terminar</button>
+    </section>
+
+    <details>
+      <summary>Datos técnicos de la conexión</summary>
+      <dl id="stats" class="stats"><dt>Estado</dt><dd>Sin conexión</dd></dl>
+    </details>
+
+    <details>
+      <summary>Registro</summary>
+      <pre id="log" class="log"></pre>
+    </details>
+
+    <p class="hint">Conecta el intercomunicador del casco a este celular <b>antes</b> de pulsar Conectar. Durante el viaje deja esta página abierta y la pantalla encendida.</p>
+  </main>
+
+  <audio id="remoteAudio" autoplay playsinline></audio>
+  <script src="/app.js"></script>
+</body>
+</html>
